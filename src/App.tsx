@@ -1,8 +1,6 @@
-import { useState } from 'react'
-import './App.css'
-
-function App() {
-  const [subs, setSubs] = useState([
+import { useEffect, useState } from 'react'
+import List from './components/List'
+const INITIAL_STATE = [
     {
       nick: 'dapelu',
       subMonths: 3,
@@ -14,23 +12,29 @@ function App() {
       subMonths: 7,
       avatar:'http://i.pravatar.cc/150?u=sergio_serrano'
     }
-  ])
+  ]
+
+interface Sub{
+  nick: string
+  subMonths: number
+  avatar: string
+  description?: string
+}
+interface AppState{
+  subs: Array<Sub>
+}
+
+function App() {
+  const [subs, setSubs] = useState<AppState["subs"]>([])
+
+  useEffect(() =>{
+    setSubs(INITIAL_STATE)
+  },[])
 
   return (
     <div className="App">
       <h1> MIDU subs:</h1>
-      <ul>
-        {subs.map(sub =>{
-          return(
-            <li key= {sub.nick}>
-              <img src={sub.avatar} alt={`Avatar for ${sub.nick}`}/>
-              <h4>{sub.nick}(<small>{sub.subMonths}</small>)</h4>
-              <p>{sub.description?.substring(0,100)}</p>
-            </li>
-          )
-        })
-        }
-      </ul>
+      <List subs={subs}/>
     </div>
   )
 }
