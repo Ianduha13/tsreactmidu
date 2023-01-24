@@ -41,6 +41,11 @@ img{
   height: auto;
   width: 50px;
 }
+textarea{
+  font-family: inherit;
+  margin-bottom: 8px;
+  padding-left: 5px;
+}
 ul li{
   border-radius: 4px;
   border: 1px solid #eee;
