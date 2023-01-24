@@ -1,6 +1,8 @@
 import { useEffect, useState } from 'react'
 import List from './components/List'
 import Form from './components/Form'
+import { Sub } from './types'
+
 
 const INITIAL_STATE = [
     {
@@ -16,12 +18,7 @@ const INITIAL_STATE = [
     }
   ]
 
-interface Sub{
-  nick: string
-  subMonths: number
-  avatar: string
-  description?: string
-}
+
 interface AppState{
   subs: Array<Sub>
 }
